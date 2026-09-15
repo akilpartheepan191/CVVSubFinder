@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Create substitution chart</title>
+    <script>
+      function updateDropdowns() {
+        var dropdownContainer = document.getElementById('dropdownContainer');
+        var countInput = document.getElementById('countInput');
+        var count = parseInt(countInput.value);
+
+        // Clear previous dropdown menus
+        dropdownContainer.innerHTML = '';
+
+        // Create new dropdown menus
+        for (var i = 1; i <= count; i++) {
+          var searchInput = document.createElement('input');
+          searchInput.type = 'text';
+          searchInput.placeholder = 'Search';
+          searchInput.addEventListener('input', filterOptions);
+
+          var select = document.createElement('select');
+          select.name = 'option' + i;
+
+          // Add options to the dropdown menu
+          {% for option in options %}
+          var option = document.createElement('option');
+          option.value = '{{ option }}';
+          option.text = '{{ option }}';
+
+          // Add a line break after each option
+          select.appendChild(option);
+          select.appendChild(document.createElement('br'));
+          {% endfor %}
+
+          // Append search input, dropdown, and line break to the container
+          dropdownContainer.appendChild(searchInput);
+          dropdownContainer.appendChild(select);
+          dropdownContainer.appendChild(document.createElement('br'));
+        }
+      }
+
+      function filterOptions(event) {
+        var searchQuery = event.target.value.toLowerCase();
+        var select = event.target.nextSibling; // Get the dropdown next to the search input
+
+        // Filter options based on search query
+        for (var i = 0; i < select.options.length; i++) {
+          var option = select.options[i];
+          var optionText = option.text.toLowerCase();
+          if (optionText.includes(searchQuery)) {
+            option.style.display = '';
+          } else {
+            option.style.display = 'none';
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Create Substituition chart</h1>
+    <form method="POST" action="/">
+      <label>Number of absentees:</label>
+      <input type="number" id="countInput" name="countInput" value="countInput" onchange="updateDropdowns()" min="1" required>
+      <div id="dropdownContainer"></div>
+      <input type="submit" value="Generate substitution chart">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+Data stucture of a timetable list
+0-7:the list of teachers
+8:category{
+1:class 1 - 8
+2:class 9 and above
+}
+9:free_score #the more free eligible to get substitution he is,the less score is given 

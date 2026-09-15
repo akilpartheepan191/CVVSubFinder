@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python \"C:\\\\Users\\\\akilp\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-akilp-CHUMMA-BDAY-photos-CVVSubFinder-CVVSubFinder\\\\cb199b7e-9520-4229-891d-152d7dd831ee\\\\scratchpad\\\\inspect.py\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\akilp\\CHUMMA BDAY\\photos\\CVVSubFinder\\CVVSubFinder"
+    ]
+  }
+}
